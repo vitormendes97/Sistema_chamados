@@ -29,7 +29,6 @@ public class Chamados {
     public void ValidarChamados(){
     
         ControleChamados controle = new ControleChamados();
-        ControleEmpresas ce = new ControleEmpresas();
         ControleClientes cc = new ControleClientes();
         
        Empresa m =  new Empresa(2, "StartUP 2.0");
@@ -52,7 +51,6 @@ public class Chamados {
     
     
         ControleChamados controle = new ControleChamados();
-        ControleEmpresas ce = new ControleEmpresas();
         ControleClientes cc = new ControleClientes();
         
        Empresa m =  new Empresa(2, "StartUP 2.0");
@@ -86,8 +84,6 @@ public class Chamados {
          c.setPrioridade(3);
          
          controle.setChamadoAlterado(c);
-         
-         System.out.println(c);
          
          Assert.assertEquals(c, controle.getChamadoAlterado());
          
