@@ -46,9 +46,7 @@ public class ControleClientesTest {
             try (PrintWriter writer = new PrintWriter(file)) {
                 writer.print("");
             }
-            
-            
-            
+  
             ControleEmpresas ce = new ControleEmpresas();
             ControleClientes cc = new ControleClientes();
             Empresa m =  ce.inserir(100, "StartUP 3.0");
