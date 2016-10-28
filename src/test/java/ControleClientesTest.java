@@ -43,9 +43,9 @@ public class ControleClientesTest {
         try {
             
            String file = "empresas.dat";
-           PrintWriter writer = new PrintWriter(file);
-            writer.print("");
-            writer.close();
+            try (PrintWriter writer = new PrintWriter(file)) {
+                writer.print("");
+            }
             
             
             
@@ -63,11 +63,7 @@ public class ControleClientesTest {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ControleClientesTest.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        
-        
-        
-       
-    
+          
     };
     
    @Test
