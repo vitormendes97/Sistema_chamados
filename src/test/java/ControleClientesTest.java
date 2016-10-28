@@ -40,15 +40,15 @@ public class ControleClientesTest {
         
         
         // Garante que nunca vai dar erro de que a empresa já foi cadastrada
-        try {
-            
-           String file = "empresas.dat";
-            try (PrintWriter writer = new PrintWriter(file)) {
-                writer.print("");;
+//        try {
+//            
+//           String file = "empresas.dat";
+//            try (PrintWriter writer = new PrintWriter(file)) {
+//                writer.print("");
                 
             ControleEmpresas ce = new ControleEmpresas();
             ControleClientes cc = new ControleClientes();
-            Empresa m =  ce.inserir(100, "StartUP 3.0");
+            Empresa m =  ce.inserir(15, "StartUPsvip 10.0");
             ClienteEmpresa ca = cc.incluiNovoCliente(m, 43166637, "Vitor Mendes", 26104041);
             Assert.assertNotNull(m);
             Assert.assertNotNull(ca);
@@ -58,14 +58,13 @@ public class ControleClientesTest {
             
             System.out.println(m);
             
-            writer.close();
             }
   
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ControleClientesTest.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(ControleClientesTest.class.getName()).log(Level.SEVERE, null, ex);
+//        } 
           
-    };
+    
     
    @Test
    public void VerificarClientePorCPF(){
