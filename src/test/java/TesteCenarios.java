@@ -115,7 +115,7 @@ public class TesteCenarios {
        
         // Verifica se controle.getChamadoAlterado é null . Essa condição deve ser sempre verdade
         // já que eu acabei de mudar um chamado
-//       Assert.assertNotNull(controle.getChamadoAlterado());
+        // Assert.assertNotNull(controle.getChamadoAlterado());
         
         // Não deveria ser nulo mas é ...
         
