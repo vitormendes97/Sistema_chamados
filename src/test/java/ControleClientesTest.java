@@ -44,9 +44,8 @@ public class ControleClientesTest {
             
            String file = "empresas.dat";
             try (PrintWriter writer = new PrintWriter(file)) {
-                writer.print("");
-            }
-  
+                writer.print("");;
+                
             ControleEmpresas ce = new ControleEmpresas();
             ControleClientes cc = new ControleClientes();
             Empresa m =  ce.inserir(100, "StartUP 3.0");
@@ -58,6 +57,10 @@ public class ControleClientesTest {
             Assert.assertEquals("Vitor Mendes", ca.getNome());
             
             System.out.println(m);
+            
+            writer.close();
+            }
+  
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ControleClientesTest.class.getName()).log(Level.SEVERE, null, ex);
         } 

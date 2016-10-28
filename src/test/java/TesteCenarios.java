@@ -41,11 +41,12 @@ public class TesteCenarios {
             
            String file = "empresas.dat";
            PrintWriter writer;
+            
         try {
-            writer = new PrintWriter(file);
+           writer = new PrintWriter(file);
             writer.print("");
-            writer.close();
-             Empresa m =  new Empresa(2, "StartUP 2.0");
+            
+             Empresa m =  new Empresa(5, "Gradle 2.0");
        ClienteEmpresa ca = cc.incluiNovoCliente(m, 43166637, "Vitor Mendes", 26104041);
        Tecnico t1 = new Tecnico("Juan Calleiros" , 24567072);
         
@@ -54,12 +55,13 @@ public class TesteCenarios {
 
         Chamado c2 = controle.InserirChamadoBancoDeDados("Query não funciona",
                 "...", 2, t1, ca, "Windows", "7", "master");
-        
+        writer.close();
       
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TesteCenarios.class.getName()).log(Level.SEVERE, null, ex);
         }
             
+        
       
     }
     
@@ -115,7 +117,7 @@ public class TesteCenarios {
        
         // Verifica se controle.getChamadoAlterado é null . Essa condição deve ser sempre verdade
         // já que eu acabei de mudar um chamado
-        // Assert.assertNotNull(controle.getChamadoAlterado());
+//       Assert.assertNotNull(controle.getChamadoAlterado());
         
         // Não deveria ser nulo mas é ...
         
