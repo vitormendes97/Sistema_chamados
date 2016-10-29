@@ -12,6 +12,7 @@ import entidade.Chamado;
 import entidade.ClienteEmpresa;
 import entidade.Empresa;
 import entidade.Tecnico;
+import entidade.TipoConexao;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -136,6 +137,56 @@ public class TesteCenarios {
         Assert.assertEquals(26104149, x.getTelefone());
     }
     
+    @Test 
+    public void createChamado(){
+        
+        ControleClientes cc = new ControleClientes();
+        
+       Empresa m =  new Empresa(2, "StartUP 2.0");
+       ClienteEmpresa ca = cc.incluiNovoCliente(m, 43166637, "Vitor Mendes", 26104041);
+       Tecnico t1 = new Tecnico("Juan Calleiros" , 24567072);
+       
+        ControleChamados cchamado = new ControleChamados();
+        
+        Chamado rede = cchamado.InserirChamadoRede("Erro cabeamento da rede", 
+                "Não estou conseguindo conectar a rede", 2, t1, ca, "Linux","Mint", "ADSL", "192.168.0.1");
+    
+        
+        Chamado banco = cchamado.InserirChamadoBancoDeDados("Permissão de insert", "Preciso da permissão para fazer minha tarefa"
+                , 3, t1, ca, "Windows", "Seven Ultimate", "Mysql");
+        
+        Chamado desempenho = cchamado.InserirChamadoDesempenho("Performace do Windows XP", "Ficou lerdo , mais que o VISTA"
+                , 2, t1, ca, "Windows", "XP", "..", 2.1);
+        
+        
+        Assert.assertNotNull(banco);
+        Assert.assertNotNull(rede);
+        Assert.assertNotNull(desempenho);
+        
+        Assert.assertEquals("ADSL" , rede.getTipoConexao());
+        Assert.assertEquals("Mysql" , banco.getBancoDeDados());
+        Assert.assertEquals(2.1, desempenho.getDuracaoOperacao(),1);
+    
+    }
+    
+       
+   @Test
+   public void validarQtdChamados(){
+        ControleClientes cc = new ControleClientes();
+         Empresa m =  new Empresa(2, "StartUP 2.0");
+        ClienteEmpresa ca = cc.incluiNovoCliente(m, 43166637, "Vitor Mendes", 26104041);
+        ClienteEmpresa ca2 = cc.incluiNovoCliente(m, 100, "Cliente novo", 26114142);
+        
+       ControleChamados cchamado = new ControleChamados(); 
+       int t = cchamado.validarQtdChamados(ca);
+       int t2 = cchamado.validarQtdChamados(ca2);
+   
+       Assert.assertEquals(5,t); // Nesse código inteiro o cliente ca faz 5 chamados
+       Assert.assertEquals(0,t2);
+       
+   }
+
+    
     public TesteCenarios() {
     }
     
@@ -155,9 +206,5 @@ public class TesteCenarios {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
 }
